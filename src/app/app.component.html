@@ -6,6 +6,52 @@
     <title>To Do List</title>
 </head>
 <body>
-    
+
+    <div class="d-flex justify-content-center">
+        <div class="container text-center">
+            <h1 class="display-4">Todos</h1>
+            <p class="lead">Create your task list!</p>
+            
+            <!--Card-->
+
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                     <!--formulaire d'entrée-->
+                    <div class="card-header">
+                        <form>
+                            <input type="text" class="form-control" placeholder="Please enter your task ..." style="width: 38rem;">
+                        </form>
+                    </div>
+                    <!--Liste de taches-->
+                    <ul class="list-group list-group-flush text-left">
+                        
+                        <li class="list-group-item">
+                            <input type="checkbox" name="taskOne">An item
+                        </li>
+                        <li class="list-group-item">
+                            <input type="checkbox" name="taskTwo">A second item
+                        </li>
+                        <li class="list-group-item">
+                            <input type="checkbox" name="taskThree">A third item
+                        </li>
+                        <li class="list-group-item">
+                            <input type="checkbox" name="taskFour">A fourth item
+                        </li>
+                        <li class="list-group-item">
+                            <input type="checkbox" name="taskFive">And a fifth one
+                        </li>
+                    </ul>
+                    <div class="card-footer text-left">
+                        4 items left
+                    </div>
+                </div>
+            
+            <!--Bouton remove-->
+            <a class="btn btn-primary btn-lg" href="#" role="button">Clear completed tasks</a>
+            
+            <!--list group-->
+            
+        </div>
+    </div>
 </body>
 </html>
