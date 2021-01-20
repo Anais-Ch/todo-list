@@ -1,1 +1,3 @@
 /* You can add global styles to this file, and also import other style files */
+// we use ~ to specify to angular that we are looking from files in node_modules directly
+@import "~bootstrap/scss/bootstrap";
