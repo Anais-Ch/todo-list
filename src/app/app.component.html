@@ -15,39 +15,45 @@
             <!--Card-->
 
                 <!--<img src="..." class="card-img-top" alt="...">-->
-                <div class="card-body">
+                <div class="card">
                      <!--formulaire d'entrée-->
                     <div class="card-header">
                         <form>
-                            <input type="text" class="form-control" placeholder="Please enter your task ..." style="width: 38rem;">
+                            <!--ajoute l'appelk de la méthode ppour m'event sur entrée-->
+                            <input type="text" class="form-control" (keyup)="addItem($event)" placeholder="Please enter your task ...">
                         </form>
                     </div>
-                    <!--Liste de taches-->
+                    <!--Liste de taches -->
                     <ul class="list-group list-group-flush text-left">
-                        
-                        <li class="list-group-item">
-                            <input type="checkbox" name="taskOne">An item
+                        <!--template -->
+                            <!--boucle for : *ngFor="let item of todoArray"  -->
+                        <li *ngFor="let item of todoArray" class="list-group-item d-flex justify-content-between" d-flex justify-content-between>
+                            <!--checkbox-->
+                            <input type="checkbox" id="taskOne" class="form-check-input">
+                            <!--text-->
+                            <label class ="form-check-label" for="taskOne">
+                                {{ item }}
+                            </label>
+                            <!--Bouton x-->
+                            <button class="btn btn-outline-danger btn-sm">
+                                X
+                            </button>
                         </li>
-                        <li class="list-group-item">
-                            <input type="checkbox" name="taskTwo">A second item
-                        </li>
-                        <li class="list-group-item">
-                            <input type="checkbox" name="taskThree">A third item
-                        </li>
-                        <li class="list-group-item">
-                            <input type="checkbox" name="taskFour">A fourth item
-                        </li>
-                        <li class="list-group-item">
-                            <input type="checkbox" name="taskFive">And a fifth one
-                        </li>
+                        <!--Fin template-->
                     </ul>
-                    <div class="card-footer text-left">
-                        4 items left
+                    
+                    <div class="card-footer d-flex justify-content-between">
+                        <div>
+                             {{ todoArray.length }} left
+                        </div>
+                        <div>
+                            <!--Bouton remove-->
+                            <a class="btn btn-sm btn-link" href="#" role="button">Clear completed tasks</a>
+                        </div>
                     </div>
                 </div>
             
-            <!--Bouton remove-->
-            <a class="btn btn-primary btn-lg" href="#" role="button">Clear completed tasks</a>
+            
             
             <!--list group-->
             
