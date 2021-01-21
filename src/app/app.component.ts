@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { TodoItem } from './todo-item'; //importe le todoItem pour pouvoir utiliser l'interface
+//pour utilise rl'interface il nous faut des obkets items avec des title et des des checkbox
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +10,24 @@ export class AppComponent {
   title = 'todo-list';
   // crée un tableau vide pour les string composant la liste
   // public(privbate or else) nomdel'objet type objet(Array)>nature de sdonnées> = [](c'est un tableau vide)
-   public todoArray : Array<string> = [
-     'item 1',
-     'item 2',
-     'item 3',
-     'item 4',
+  // 
+  public todoArray : Array<TodoItem> = [
+     { //on créée un objet
+       title : 'item 1',
+       checked : false,
+     },
+     {//on créée un autre  objet
+      title : 'item 2',
+      checked : false,
+    },
+    { //ect
+      title : 'item 3',
+      checked : false,
+    },
+    {
+      title : 'item 4',
+      checked : false,
+    },
    ];
 
    //event sur push enter: methode
@@ -45,7 +59,10 @@ export class AppComponent {
       // et qui n'a pas constituée d'espaces
       if(str !== ''){
         //ajoute au tableau d'items todoArray
-        this.todoArray.push($input.value);
+        this.todoArray.push({
+          title: str,
+          checked: false,
+        });
         // on remet la valeur du champ de formulaire à 0
         $input.value = '';  
       }

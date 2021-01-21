@@ -27,18 +27,19 @@
                     <ul class="list-group list-group-flush text-left">
                         <!--template -->
                             <!--boucle for : *ngFor="let item of todoArray"  -->
-                        <li *ngFor="let item of todoArray" class="list-group-item d-flex justify-content-between" d-flex justify-content-between>
+                        <li *ngFor="let item of todoArray; let itemIndex = index" class="list-group-item d-flex justify-content-between" d-flex justify-content-between>
                             <!--checkbox-->
                             <input type="checkbox" id="taskOne" class="form-check-input">
                             <!--text-->
                             <label class ="form-check-label" for="taskOne">
-                                {{ item }}
+                                <!--n stock l'obket on lui didsant que le text entré devient l'attribut title de l'objet créée-->
+                                {{ item.title }} 
                             </label>
                             <!--Bouton x-->
                             <!--on met les meme evenements qu'en en js-->
                             <!--(click)="removeItem($event)-->
                             <!--on ajoute ', item' ) ($, event,item) pour donner la variable récupérer via la boucle à la methode-->
-                            <button class="btn btn-outline-danger btn-sm" (click)="removeItem($event, item)">
+                            <button class="btn btn-outline-danger btn-sm" (click)="removeItem( itemIndex)">
                                 X
                             </button>
                         </li>
