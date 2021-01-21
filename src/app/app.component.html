@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-center">
         <div class="container text-center">
             <h1 class="display-4">Todos</h1>
-            <p class="lead">Create your task list!</p>
+            <p class="lead">Create your own task list!</p>
             
             <!--Card-->
 
@@ -29,10 +29,15 @@
                             <!--boucle for : *ngFor="let item of todoArray"  -->
                         <li *ngFor="let item of todoArray; let itemIndex = index" class="list-group-item d-flex justify-content-between" d-flex justify-content-between>
                             <!--checkbox-->
-                            <input type="checkbox" id="taskOne" class="form-check-input">
+                            <!--aprés avoir ajoute slel signes de formsModules dans app moudule.ts-->
+                            <!--[(ngModel)]="item.checked" affiche en cocher que les objets ayant checked : true-->
+                            <!--[attr.id]="'todo-check-' + itemIndex"  Permet de générer automatiqument un id chaine de caractéere concaténées avec l'index du tableau-->
+                           
+                            <input type="checkbox" for="defaultCheck1" class="form-check-input" [attr.id]="'todo-check-' + itemIndex" [(ngModel)]="item.checked">
                             <!--text-->
-                            <label class ="form-check-label" for="taskOne">
-                                <!--n stock l'obket on lui didsant que le text entré devient l'attribut title de l'objet créée-->
+                            <!-- boucle générant un id auto incrémenté[attr.for]="'todo-check-' + itemIndex"-->
+                            <label class ="form-check-label" [attr.for]="'todo-check-' + itemIndex">
+                                <!--on stock l'obket on lui didsant que le text entré devient l'attribut title de l'objet créée-->
                                 {{ item.title }} 
                             </label>
                             <!--Bouton x-->
@@ -52,7 +57,7 @@
                         </div>
                         <div>
                             <!--Bouton remove-->
-                            <a class="btn btn-sm btn-link" href="#" role="button">Clear completed tasks</a>
+                            <a class="btn btn-sm btn-link" href="#" role="button" (click)="clearCompletedItem()">Clear completed tasks</a>
                         </div>
                     </div>
                 </div>

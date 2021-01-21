@@ -1,3 +1,4 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { TodoItem } from './todo-item'; //importe le todoItem pour pouvoir utiliser l'interface
 //pour utilise rl'interface il nous faut des obkets items avec des title et des des checkbox
@@ -14,20 +15,8 @@ export class AppComponent {
   public todoArray : Array<TodoItem> = [
      { //on créée un objet
        title : 'item 1',
-       checked : false,
+       checked : true,
      },
-     {//on créée un autre  objet
-      title : 'item 2',
-      checked : false,
-    },
-    { //ect
-      title : 'item 3',
-      checked : false,
-    },
-    {
-      title : 'item 4',
-      checked : false,
-    },
    ];
 
    //event sur push enter: methode
@@ -94,5 +83,39 @@ export class AppComponent {
 
     }
   }
+
+  //suppr tout les éléments coché
+  public clearCompletedItem(): void{
+    // on commence par la fin du tableau et on remonte pour éviterd'avoir des pb
+    // il n'y pas de trous dans les tab js>> les index se décallent au fur et à mesure
+    //on commençant par la fin  on vérfie toujours tout les index 
+    //en  commençant par le début on sauterais des indexs
+    
+    //SOLUTION 1
+    /*for(let i = this.todoArray.length -1 ; i >= 0; i--){
+      if (this.todoArray[i].checked === true){
+        this.todoArray.splice(i, 1);
+      }
+    }*/
+
+    //Solution 2
+    /*for(let i =0 ; i< this.todoArray.length ; i++){
+      if (this.todoArray[i].checked === true){
+        this.todoArray.splice(i, 1);
+        i--; // on remonte d'un index si ons upprime pour ne pas suater d'index mais une ligne de plus
+      }
+    }*/
+
+
+    //SOlution 3
+    //methode filter : créée un nv tab a partir d'un tab existant ici todoArray
+    //1er argumet une fonction anonyme ave cprmeie rargument élément du tab
+    //cette fonction anonyme s'execute comme une boucle sur tout le tab
+    //cette fonction anonyme doit retourner true si on veut garder l'element dans le npouveau tab
+    //false si on veut suppr element de nv tab
+    this.todoArray = this.todoArray.filter((item : TodoItem) => {
+      return !item.checked; //on veut enlever élément du tabelau donc false si on veut le garder doit renvoyer true
+      // si case cochée item.checked = true
+    });
+  }
 }
-  
