@@ -18,10 +18,10 @@
                 <div class="card">
                      <!--formulaire d'entrée-->
                     <div class="card-header">
-                        <form>
-                            <!--ajoute l'appelk de la méthode ppour m'event sur entrée-->
+                        <div class="form-group">
+                            <!--ajoute l'appel de la méthode ppour m'event sur entrée-->
                             <input type="text" class="form-control" (keyup)="addItem($event)" placeholder="Please enter your task ...">
-                        </form>
+                        </div>
                     </div>
                     <!--Liste de taches -->
                     <ul class="list-group list-group-flush text-left">
@@ -35,7 +35,10 @@
                                 {{ item }}
                             </label>
                             <!--Bouton x-->
-                            <button class="btn btn-outline-danger btn-sm">
+                            <!--on met les meme evenements qu'en en js-->
+                            <!--(click)="removeItem($event)-->
+                            <!--on ajoute ', item' ) ($, event,item) pour donner la variable récupérer via la boucle à la methode-->
+                            <button class="btn btn-outline-danger btn-sm" (click)="removeItem($event, item)">
                                 X
                             </button>
                         </li>
