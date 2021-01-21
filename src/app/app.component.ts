@@ -62,16 +62,19 @@ export class AppComponent {
    //attention bien mettre la méthode dans AddItem
    //on passe par uen methode
    //adding 2nd argument named item of type string 
-  public removeItem($event: MouseEvent, item : string):void{ //$event ici click donc MouseEvent
-    console.log($event);
+  public removeItem(index : number):void{ //$event ici click donc MouseEvent
     //enlever dernier élement du tableau
     //this.todoArray.pop();
 
-    //suppr element précis du tableau
-    const index = this.todoArray.indexOf(item); //methode indexof nous donne l'index de l'element
-    if(index !== -1){//pour ne pas compter à partir de la fin
+    //suppr element précis du tableau 
+    //html change via valeur typescript angular fais le reste via ng-for en terme d'affichage
+    //const index = this.todoArray.indexOf(item); //methode indexof nous donne l'index de l'element
+    // ATTENTION INdexof retourne 1 suel index si deux element ont le mm nom il retrounera le premier qu'il trouvera
+    if(index > -1 && this.todoArray.length){//pour ne pas compter à partir de la fin (au cas ou l'appli évolue)
+        //On vérifie que l'index existe bien dnas le tableau
+    
       this.todoArray.splice(index, 1); // 2 argument, l'index de l'array  et le nb d'element à suppr 
-    console.log(item);
+
     }
   }
 }
